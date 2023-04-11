@@ -10,6 +10,15 @@ data = lab_sodra %>%
 
 data = filtered_data
 
-ggplot(data, aes(x = value)) +
-  geom_histogram(binwidth = 10, fill = "blue", color = "black") +
-  labs(title = "Histogram of Values", x = "Values", y = "Frequency")
+p = ggplot(data, aes(x = avgWage)) +
+  geom_histogram(binwidth = 10, fill = "#0072B2", color = "black", alpha = 0.8) +
+  labs(title = "Histogram of Values", x = "Vid. atlyginimas", y = "Dažnumas")
+theme_minimal() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    axis.title = element_text(size = 14, face = "bold"),
+    axis.text = element_text(size = 12),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_line(color = "grey80", linetype = "dashed")
+  )
+print(p)
