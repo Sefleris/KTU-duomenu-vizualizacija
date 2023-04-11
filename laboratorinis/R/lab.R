@@ -1,14 +1,13 @@
 library(readr)
 library(dplyr)
+library(readr)
 library(ggplot2)
-lab_sodra = read_csv("KTU-duomenu-vizualizacija/laboratorinis/data/lab_sodra.csv")
+lab_sodra = read_csv("laboratorinis/data/lab_sodra.csv")
 
 
 
 data = lab_sodra %>%
   filter(lab_sodra$ecoActCode == '451100')
-
-data = filtered_data
 
 p = ggplot(data, aes(x = avgWage)) +
   geom_histogram(binwidth = 10, fill = "#0072B2", color = "black", alpha = 0.8) +
