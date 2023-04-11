@@ -1,15 +1,14 @@
 # R Laboratorinis darbas: duomenų vizualizacija
 
 | Variantas | ecoActCode |
-|------------- | ------------- |
-|20   | 11111111111 |
-
+|-----------|------------|
+| 12        | 451100     |
 
 ### 1. Užduotis
 
 Atsakymas:
 
-![histograma](img/pavyzdys1.png)
+![histograma](img/Rplot1.png)
 
 Išvados:
 
@@ -21,7 +20,6 @@ Atsakymas:
 
 Išvados:
 
-
 ### 3. Užduotis
 
 Atsakymas:
@@ -29,7 +27,6 @@ Atsakymas:
 ![apdraustieji](img/pavyzdys3.png)
 
 Išvados:
-
 
 ### 4. Užduotis
 
