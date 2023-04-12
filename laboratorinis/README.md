@@ -6,27 +6,21 @@
 
 ### 1. Užduotis
 
-Atsakymas:
+![](img/Rplot1.png)
 
-![histograma](img/Rplot1.png)
-
-Išvados:
+Išvados: Matome, kad automobilių ir lengvųjų variklinių transporto priemonių pardavimo įmonių atlyginimai išsibarsę aplink 850. Dispersija šiek tiek ištempta į dešinę, bet to ir tikimes nagrinėdami atlyginimų duomenis.
 
 ### 2. Užduotis
 
-Atsakymas:
+![](img/Rplot2.png)
 
-![atlyginimai](img/pavyzdys2.png)
-
-Išvados:
+Išvados: Pastebėtina, kad UAB "Autovista" atlyginimai buvo ženkliai pašokę kovo mėn., UAB "Mobility Fleet Solutions" balandžio mėn., o UAB "Krone Scanbalt" rugsėjo mėn. Galime įtarti, kad šie pokyčiai buvo sąlygoti dosnių premijų minėtais mėnesiais kadangi kitais stebėtais mėnesiais atlyginimai išliko pakankamai stabilūs arba tendencingai kilo/leidosi. Taip pat pastebime, kad "Aktsiaselts auto 100" atlyginimai per 4 stebėtus mėn. pakilo apie 50%.
 
 ### 3. Užduotis
 
-Atsakymas:
+![](img/Rplot3.png)
 
-![apdraustieji](img/pavyzdys3.png)
-
-Išvados:
+Išvados: Iš aukščiau minėtų įmonių daugiausia darbuotojų turėjo UAB " City Bee Solutions", kuri 2022-12 mėn. buvo apdraudusi 62 darbuotojus. Tuo pat metu "Aktsiaselts auto 100 Lietuvos filialas" turėjo vos 7 darbuotojus, "UAB Austovista" tik 6, Krone Scanbalt tik 15. Toks nedidelis apdraustų darbuotojų skaičius paaiškina šių įmonių vidutinio atlyginimo jautrumą.
 
 ### 4. Užduotis
 
