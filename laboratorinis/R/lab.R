@@ -1,8 +1,8 @@
 library(readr)
 library(dplyr)
-library(readr)
 library(ggplot2)
 library(tidyverse)
+
 lab_sodra = read_csv("laboratorinis/data/lab_sodra.csv")
 
 data = lab_sodra %>%
@@ -16,7 +16,6 @@ data = data %>%
   )
 
 summary(data)
-unique = data %>% filter(avgWage<100)
 
 # First plot
 p = ggplot(data, aes(x = avgWage)) +
