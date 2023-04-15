@@ -24,6 +24,8 @@ Iš aukščiau minėtų įmonių daugiausia darbuotojų turėjo UAB " City Bee S
 
 ### 4. Užduotis
 
-Shiny R aplikacijos nuotrauka:
+Shiny R aplikacijos nuoroda: <https://sefleris.shinyapps.io/KTU_R_Shiny_Lab/> 
 
-![shiny app](img/shiny_example.png)
+Shiny R aplikacijos nuotraukos:
+
+![](img/App1.png) ![](img/App2.png) ![](img/App3.png)

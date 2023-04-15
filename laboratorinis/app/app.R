@@ -84,8 +84,7 @@ ui = dashboardPage(
 
 # Define server logic for the app
 server = function(input, output, session) {
-  data = read_csv("../data/lab_sodra.csv")
-  
+  data = read_csv("https://github.com/kestutisd/KTU-duomenu-vizualizacija/raw/main/laboratorinis/data/lab_sodra.csv")
   data = data %>%
         filter(ecoActCode == 451100)
   
