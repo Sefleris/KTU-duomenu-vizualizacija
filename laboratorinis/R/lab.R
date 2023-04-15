@@ -3,7 +3,7 @@ library(dplyr)
 library(ggplot2)
 library(tidyverse)
 
-lab_sodra = read_csv("laboratorinis/data/lab_sodra.csv")
+lab_sodra = read_csv("https://github.com/kestutisd/KTU-duomenu-vizualizacija/raw/main/laboratorinis/data/lab_sodra.csv")
 
 data = lab_sodra %>%
   filter(lab_sodra$ecoActCode == '451100')
