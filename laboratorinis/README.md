@@ -28,4 +28,4 @@ Shiny R aplikacijos nuoroda: <https://sefleris.shinyapps.io/KTU_R_Shiny_Lab/>
 
 Shiny R aplikacijos nuotraukos:
 
-![](img/App1.png) ![](img/App2.png) ![](img/App3.png)
+![](img/app1.png) ![](img/app2.png) ![](img/app3.png)
