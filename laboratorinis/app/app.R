@@ -203,10 +203,13 @@ server = function(input, output, session) {
   
   output$TaxBox <- renderValueBox({
     req(nrow(filtered_data()) > 0)
-    
-    valueBox( formatC(sum(filtered_data()$tax), format = "f", big.mark = ",",
-                      decimal.mark = ".", digits = 2),
-            "Sumokėti mokesčiai",icon = icon("file-invoice-dollar"), color = "purple",width=3)
+    tax_sum <- sum(filtered_data()$tax, na.rm = TRUE)
+    tax_sum <- ifelse(is.na(tax_sum), "Nėra informacijos", 
+                      paste0( formatC(tax_sum, format = "f", 
+                                      big.mark = ",", decimal.mark = ".", digits = 0)," €"))
+
+    valueBox(tax_sum, "Sumokėti mokesčiai",  
+             icon = icon("file-invoice-dollar"), color = "purple",width=3)
   })
   
   output$SalaryBox <- renderValueBox({
@@ -214,9 +217,10 @@ server = function(input, output, session) {
     
     avg_wage = mean(filtered_data()$avgWage, na.rm = TRUE)
     avg_wage <- ifelse(is.na(avg_wage), 0, avg_wage)
-    valueBox(paste0(formatC(avg_wage, format = "f", big.mark = ",", decimal.mark = ".", digits = 2), " €"),
-             "Vidutinis atlyginimas", icon = icon("dollar"),
-             color = "yellow")}
+    valueBox(paste0(formatC(avg_wage, format = "f", big.mark = ",",
+                            decimal.mark = ".", digits = 2), " €"),
+                            "Vidutinis atlyginimas", icon = icon("dollar"),
+                            color = "yellow")}
   )
 }
 # Run the app
