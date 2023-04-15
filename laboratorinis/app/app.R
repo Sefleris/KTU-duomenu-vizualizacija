@@ -5,15 +5,12 @@ library(shinydashboard)
 library(readr)
 library(dplyr)
 library(DT)
-library(dashboardthemes)
 
 
              
 ui = dashboardPage(
-  skin="black",
   dashboardHeader(title = tags$b("Sodros duomenys", style = "font-weight:bold;"),
                   titleWidth=300),
-  
   dashboardSidebar(width = 300,
      sidebarMenu(
        selectizeInput(inputId = "company_input",
@@ -29,20 +26,22 @@ ui = dashboardPage(
     ),
   
   dashboardBody(tags$head(
-      tags$style(HTML("
-        .form-group .control-label {
-          margin-bottom: 5px;}
-        .form-group .control-input {
-          margin-bottom: 0px;}
+    h3("451100: Automobilių ir lengvųjų variklinių transporto priemonių pardavimas"),
+      tags$style(
+      HTML("
+        
+        .form-group .control-label {margin-bottom: 5px;}
+        .form-group .control-input {margin-bottom: 0px;}
         .form-group .selectize-control {
-          margin-bottom: 0px;
-          width: 100%;
-          font-family: 'Roboto', sans-serif !important;}
+              margin-bottom: 0px;
+              width: 100%;
+              font-family: 'Roboto', sans-serif !important;}
           
         *{font-family: 'Roboto', sans-serif;}
         h1, h2, h3 {  font-family: 'Roboto', sans-serif; font-weight: bold;}
         .box-body .form-group:first-child { margin-top: 0px;}
         .box-title {margin-top: 0px;}
+        h3 {margin-left: 20px;}
         
       "))),
       
@@ -54,18 +53,18 @@ ui = dashboardPage(
                   infoBoxOutput("TaxBox"),
                   infoBoxOutput("SalaryBox")
                 ),
-                fluidRow(box(title = "Vid. atlyginimo grafikas",
-                             width = 11,
+                fluidRow(box(title = "Vid. atlyginimų grafikas",
+                             width = 12,
                              plotlyOutput("wage_plot"),
                              collapsible = TRUE)),
-                fluidRow(box(title = "Apdraustųjų sk. grafikas",
-                             width = 11,
+                fluidRow(box(title = "Apdraustų darb. grafikas",
+                             width = 12,
                              plotlyOutput("insured_plot"),
                              collapsible = TRUE))),
         
         tabItem(tabName = "page2", h3("Duomenų lentelė"),
-                box(collapsible=TRUE,width='12',tableOutput("table"))),
-        tabItem(tabName = "page3", "Cluster Analysis",
+                box(collapsible=TRUE,width='12',DTOutput("table"))),
+        tabItem(tabName = "page3", h3("Cluster Analysis"),
                 fluidRow(
                   column(width=8,
                          plotOutput("plot2")),
@@ -158,7 +157,12 @@ server = function(input, output, session) {
     p
   })
   
-  output$table = renderTable(filtered_data() %>% select(-avgWage2, -ecoActCode,-ecoActName -numInsured2,-month_date,-month), digits = 0)
+  output$table = renderDT({
+    req(nrow(filtered_data()) > 0)
+    
+    filtered_data() %>% 
+      select(-avgWage2, -ecoActCode, -ecoActName, -numInsured2,-month_date, -month)%>%
+      datatable(options = list(pageLength = 30, dom = 'tip', lengthMenu = c(5,15,30,50,100)))})
   
   selectedData = reactive({
     req(input$xcol, input$ycol)
@@ -197,21 +201,23 @@ server = function(input, output, session) {
       color = "blue")
   })
   
-
   
   output$TaxBox <- renderValueBox({
     req(nrow(filtered_data()) > 0)
     
     valueBox( formatC(sum(filtered_data()$tax), format = "f", big.mark = ",",
-                      decimal.mark = ".", digits = 0),
+                      decimal.mark = ".", digits = 2),
             "Sumokėti mokesčiai",icon = icon("file-invoice-dollar"), color = "purple",width=3)
   })
   
   output$SalaryBox <- renderValueBox({
     req(nrow(filtered_data()) > 0)
     
-   valueBox("80%", "Vidutinis atlyginimas", icon = icon("dollar"),
-       color = "yellow")}
+    avg_wage = mean(filtered_data()$avgWage, na.rm = TRUE)
+    avg_wage <- ifelse(is.na(avg_wage), 0, avg_wage)
+    valueBox(paste0(formatC(avg_wage, format = "f", big.mark = ",", decimal.mark = ".", digits = 2), " €"),
+             "Vidutinis atlyginimas", icon = icon("dollar"),
+             color = "yellow")}
   )
 }
 # Run the app
