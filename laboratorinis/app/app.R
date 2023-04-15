@@ -19,7 +19,7 @@ ui = dashboardPage(
        selectizeInput(inputId = "company_code_input",
                       label="Imonės kodas",
                       choices= NULL, selected=NULL),
-        menuItem("Grafikas", tabName = "page1", icon = icon("dashboard")),
+        menuItem("Grafikai", tabName = "page1", icon = icon("dashboard")),
         menuItem("Lentelė", tabName = "page2", icon = icon("table")),
         menuItem("K-means clustering", tabName = "page3", icon = icon("circle-nodes",lib = "font-awesome")))
        
